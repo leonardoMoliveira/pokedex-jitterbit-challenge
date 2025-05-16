@@ -1,0 +1,6 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 5000,
+  "vsicons.presets.angular": false,
+  "vsicons.presets.nestjs": true,
+}
