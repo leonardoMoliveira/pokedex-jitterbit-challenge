@@ -1,0 +1,11 @@
+<div *ngIf="loading">Carregando...</div>
+<div *ngIf="error">{{ error }}</div>
+<div *ngIf="pokemon as p" class="pokemon-detail">
+  <h2>{{ p.name }} (ID: {{ p.id }})</h2>
+  <img [src]="p.sprites.front_default" [alt]="p.name" />
+  <ul>
+    <li><strong>Peso:</strong> {{ p.weight }}</li>
+    <li><strong>Altura:</strong> {{ p.height }}</li>
+    <li><strong>Experiência base:</strong> {{ p.base_experience }}</li>
+  </ul>
+</div>

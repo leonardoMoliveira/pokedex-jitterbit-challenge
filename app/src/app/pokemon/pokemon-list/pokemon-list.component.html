@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Lista de Pokémons</h2>
+
+  <input type="text" placeholder="Buscar por nome" [(ngModel)]="searchName" (keyup.enter)="searchPokemon()"
+    [disabled]="loading" class="search-input" />
+
+  <div class="pokemon-list">
+    <div class="pokemon-card" *ngFor="let pokemon of pokemons" [routerLink]="['/pokemon', pokemon.id]">
+      <img [src]="pokemon.imageUrl" [alt]="pokemon.name" />
+      <div class="pokemon-name">{{ pokemon.name }}</div>
+    </div>
+  </div>
+  <button (click)="loadPokemons()" [disabled]="loading">
+    {{ loading ? 'Carregando...' : 'Buscar mais' }}
+  </button>
+</div>

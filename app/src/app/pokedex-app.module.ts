@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { routes } from './pokedex-app.routes';
 import { PokedexAppComponent } from "./pokedex-app.component";
-import { PokemonService } from "./pokemon/pokemon.service";
+import { ApiBaseUrlInterceptor } from './api-base-url.interceptor';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { PokemonService } from "./pokemon/pokemon.service";
     RouterModule.forRoot(routes),
   ],
   providers: [
-    PokemonService,
+    provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: ApiBaseUrlInterceptor, multi: true },
   ],
   declarations: [
     PokedexAppComponent,
